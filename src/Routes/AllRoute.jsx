@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router";
 import Dashboard from "../Content/Dashboard/AuthorDashBoard";
 import BookUplaod from "../Content/Dashboard/BookUplaod";
-import FileUpload from "../Content/Dashboard/FileUplaod";
 import Home from "../Content/Home/Home";
 import AuthorSignIn from "../Content/Login/AuthorSignIn";
 import PublisherSignIn from "../Content/Login/PublisherSigIn";
@@ -23,3 +22,4 @@ export default function AllRoutes() {
 		</>
 	);
 }
+

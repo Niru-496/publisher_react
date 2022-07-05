@@ -105,17 +105,13 @@ export default function AuthorSignIn() {
 						<Grid container>
 							<Grid
 								item
-								// onClick={() => {
-								// 	Navigate("/AuthorSignUp");
-								// }}
+								onClick={() => {
+									Navigate("/AuthorSignUp");
+								}}
 							>
 								<Link
 									variant="body2"
-									to={
-										redirect
-											? `/register?redirect=${redirect}`
-											: "/register"
-									}
+
 								>
 									{"Don't have an account? Sign Up"}
 								</Link>
