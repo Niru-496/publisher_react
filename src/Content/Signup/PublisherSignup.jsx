@@ -12,43 +12,18 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router";
-import axios from "axios";
 
 const theme = createTheme();
 
-export default function AuthorSignUp() {
+export default function PublisherSignUp() {
 	const Navigate = useNavigate();
-
-	let axiosConfig = {
-		headers: {
-			"Content-Type": "application/json;charset=UTF-8",
-			"Access-Control-Allow-Origin": "*",
-		},
-	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		let obj = {
-			firstName: data.get("firstName"),
-			lastName: data.get("lastName"),
+		console.log({
 			email: data.get("email"),
 			password: data.get("password"),
-		};
-		axios
-			.post(
-				"https://rann-publishers.herokuapp.com/v1/auth/user/registerAuthor",
-				obj,
-				axiosConfig
-			)
-			.then((res) => {
-				console.log("RESPONSE RECEIVED: ", res.data);
-				
-				window.location.href = "/AuthorDashBoard";
-
-			})
-			.catch((err) => {
-				console.log("AXIOS ERROR: ", err);
-			});
+		});
 	};
 
 	return (
@@ -101,12 +76,23 @@ export default function AuthorSignUp() {
 								<TextField
 									required
 									fullWidth
+									name="Organisation"
+									label="Organisation"
+									type="Organisation"
+									id="Organisation"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									required
+									fullWidth
 									id="email"
 									label="Email Address"
 									name="email"
 									autoComplete="email"
 								/>
 							</Grid>
+
 							<Grid item xs={12}>
 								<TextField
 									required
@@ -131,7 +117,7 @@ export default function AuthorSignUp() {
 							<Grid
 								item
 								onClick={() => {
-									Navigate("/AuthorSignIn");
+									Navigate("/PublisherSignIn");
 								}}
 							>
 								<Link variant="body2">

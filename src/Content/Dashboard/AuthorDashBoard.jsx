@@ -11,11 +11,11 @@ import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router";
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -69,6 +69,7 @@ function DashboardContent() {
 	const toggleDrawer = () => {
 		setOpen(!open);
 	};
+    const Navigate = useNavigate()
 
 	return (
 		<ThemeProvider theme={mdTheme}>
@@ -101,6 +102,26 @@ function DashboardContent() {
 						>
 							Dashboard
 						</Typography>
+						<Typography
+							component="h1"
+							variant="h6"
+							color="inherit"
+							noWrap
+							sx={{ flexGrow: 1 }}
+							onClick={() => Navigate("/")}
+						>
+							Home
+						</Typography>
+						<Typography
+							component="h1"
+							variant="h6"
+							color="inherit"
+							noWrap
+							sx={{ flexGrow: 1 }}
+							onClick={() => Navigate("/")}
+						>
+							Logout
+						</Typography>
 						<IconButton color="inherit">
 							<Badge badgeContent={0} color="secondary">
 								<NotificationsIcon />
@@ -125,9 +146,12 @@ function DashboardContent() {
 					<Divider />
 					<Button
 						type="submit"
-						fullWidth
+						fullWidth="true"
 						variant="contained"
 						sx={{ mt: 3, mb: 0 }}
+						onClick={() => {
+							Navigate("/BookUplaod");
+						}}
 					>
 						+ BOOK
 					</Button>

@@ -13,36 +13,19 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../Redux/Actions/AuthorLoginAction";
-
-
 
 const theme = createTheme();
 
-export default function AuthorSignIn() {
-    const Navigate = useNavigate();
-	const dispatch = useDispatch()
+export default function PublisherSignIn() {
+	const Navigate = useNavigate();
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-
-			let email=data.get("email"),
-			password = data.get("password");
-
-		dispatch(login(email, password));
+		console.log({
+			email: data.get("email"),
+			password: data.get("password"),
+		});
 	};
-	const AuthorLogin = useSelector((state) => state.AuthorLogin);
-	console.log(AuthorLogin);
-	const { error, loading, Info } = AuthorLogin;
-	const redirect = window.location.search
-		? window.location.search.split("=")[1]
-		: "/AuthorDashboard";
-	React.useEffect(() => {
-		if (Info) {
-			Navigate(redirect);
-		}
-	}, [Info, Navigate, redirect]);
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -105,18 +88,11 @@ export default function AuthorSignIn() {
 						<Grid container>
 							<Grid
 								item
-								// onClick={() => {
-								// 	Navigate("/AuthorSignUp");
-								// }}
+								onClick={() => {
+									Navigate("/PublisherSignUp");
+								}}
 							>
-								<Link
-									variant="body2"
-									to={
-										redirect
-											? `/register?redirect=${redirect}`
-											: "/register"
-									}
-								>
+								<Link variant="body2">
 									{"Don't have an account? Sign Up"}
 								</Link>
 							</Grid>
